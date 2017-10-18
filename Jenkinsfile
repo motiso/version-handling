@@ -1,32 +1,10 @@
-@NonCPS
-def jobStartedByWhat() {
-def startedByWhat = ''
-try {
-    def buildCauses = currentBuild.rawBuild.getCauses()
-    for ( buildCause in buildCauses ) {
-        if (buildCause != null) {
-            def causeDescription = buildCause.getShortDescription()
-            echo "shortDescription: ${causeDescription}"
-            if (causeDescription.contains("Started by timer")) {
-                startedByWhat = 'timer'
-            }
-            if (causeDescription.contains("Started by user")) {
-                startedByWhat = 'user'
-            }
-        }
-    }
-} catch(theError) {
-    echo "Error getting build cause: ${theError}"
-}
-
-return startedByWhat
-}
 
 
 
 node {
         checkout scm
-        def startedByWhat = jobStartedByWhat()
+        util = load 'pipeline.groovy'
+        def startedByWhat = util.jobStartedByWhat()
     
         if (startedByWhat == 'user') {
             echo 'Hello World from dev8'
