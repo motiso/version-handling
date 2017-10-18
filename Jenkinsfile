@@ -24,14 +24,10 @@ return startedByWhat
 
 def startedByWhat = jobStartedByWhat()
 
-
 node {
-   checkout scm
+        checkout scm
 
-    if (env.BRANCH_NAME == 'master') {
         if (startedByWhat == 'user') {
             echo 'Hello World from dev8'
-        }
-    } else {
         }
 }
