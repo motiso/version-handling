@@ -29,8 +29,9 @@ node {
    checkout scm
 
     if (env.BRANCH_NAME == 'master') {
-        if (startedByWhat == 'timer' || startedByWhat == 'user') {
+        if (startedByWhat == 'user') {
             echo 'Hello World from dev8'
+        }
     } else {
         }
 }
