@@ -1,11 +1,12 @@
 
 @Library('util')
 
-def startedByWhat = jobStartedByWhat()
+def myUtils = new util()
+
 
 node {
         checkout scm
-        
+        def startedByWhat = myUtils.jobStartedByWhat()
         if (startedByWhat == 'user') {
             echo 'Hello World from dev8'
         }
