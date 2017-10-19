@@ -4,5 +4,5 @@ def myUtils = new util()
 
 node {
         checkout scm
-        myUtils.fixPoms()
+        myUtils.fixPoms(project.basedir)
 }
