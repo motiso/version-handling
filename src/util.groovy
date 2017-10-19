@@ -1,7 +1,7 @@
 
 
-def jobStartedByWhat() {
-def startedByWhat = ''
+def jobStartedCause() {
+def startedCause = ''
 try {
     def buildCauses = currentBuild.rawBuild.getCauses()
     for ( buildCause in buildCauses ) {
@@ -9,10 +9,10 @@ try {
             def causeDescription = buildCause.getShortDescription()
             echo "shortDescription: ${causeDescription}"
             if (causeDescription.contains("Started by timer")) {
-                startedByWhat = 'timer'
+                startedCause = 'timer'
             }
             if (causeDescription.contains("Started by user")) {
-                startedByWhat = 'user'
+                startedCause = 'user'
             }
         }
     }
@@ -20,7 +20,7 @@ try {
     echo "Error getting build cause: ${theError}"
 }
 
-return startedByWhat
+return startedCause
 }
 
 return this
