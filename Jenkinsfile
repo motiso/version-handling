@@ -1,3 +1,8 @@
+@Library('util')
+
+def myUtils = new util()
+
 node {
-   echo 'Hello World from master' 
+        checkout scm
+        myUtils.fixPoms()
 }
