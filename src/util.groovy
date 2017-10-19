@@ -1,5 +1,5 @@
 
-@NonCPS
+
 def jobStartedByWhat() {
 def startedByWhat = ''
 try {
@@ -23,4 +23,4 @@ try {
 return startedByWhat
 }
 
-return this;
+return this
