@@ -1,10 +1,12 @@
+ import groovy.xml.StreamingMarkupBuilder
+ import groovy.util.XmlNodePrinter
+ import org.codehaus.groovy.tools.xml.DomToGroovy
+ import groovy.xml.XmlUtil
+
+
 def fixPoms()
 {
-        import groovy.xml.StreamingMarkupBuilder
-        import groovy.util.XmlNodePrinter
-        import org.codehaus.groovy.tools.xml.DomToGroovy
-        import groovy.xml.XmlUtil
-
+       
         println "Release Script Start -----"
 
         def dir = new File(project.basedir, 'pom.xml')
