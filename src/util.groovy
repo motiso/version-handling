@@ -2,7 +2,7 @@
  import groovy.util.XmlNodePrinter
  import org.codehaus.groovy.tools.xml.DomToGroovy
  import groovy.xml.XmlUtil
-
+ import groovy.util.AntBuilder
 
 def fixPoms(baseProjectDir)
 {
