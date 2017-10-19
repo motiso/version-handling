@@ -4,7 +4,7 @@
 node {
         checkout scm
    
-        def startedByWhat = util.jobStartedByWhat()
+        def startedByWhat = jobStartedByWhat()
     
         if (startedByWhat == 'user') {
             echo 'Hello World from dev8'
