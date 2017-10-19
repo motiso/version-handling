@@ -4,5 +4,6 @@ def myUtils = new util()
 
 node {
         checkout scm
-        myUtils.fixPoms(${workspace})
+        def projectBase = "${workspace}"
+        myUtils.fixPoms(projectBase)
 }
