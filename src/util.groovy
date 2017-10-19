@@ -4,12 +4,12 @@
  import groovy.xml.XmlUtil
 
 
-def fixPoms()
+def fixPoms(baseProjectDir)
 {
        
         println "Release Script Start -----"
 
-        def dir = new File(${basedir}, 'pom.xml')
+        def dir = new File(baseProjectDir, 'pom.xml')
         // copy a backup of the pom
         println "A copy of the old pom is saved in pom.backup.xml"
         ant.copy(file: dir, tofile: "pom.backup.xml")
