@@ -1,9 +1,4 @@
- import groovy.xml.StreamingMarkupBuilder
- import groovy.util.XmlNodePrinter
- import org.codehaus.groovy.tools.xml.DomToGroovy
- import groovy.xml.XmlUtil
- import groovy.util.AntBuilder
-
+ 
 @Grapes(
     @Grab(group='org.xmlunit', module='xmlunit-matchers', version='2.4.0')
 )
