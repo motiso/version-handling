@@ -1,3 +1,9 @@
+@Library('util')
+
+def myUtils = new util()
+
 node {
-   echo 'Hello World from master' 
+        checkout scm
+        def projectBase = "${workspace}"
+        myUtils.fixPoms(projectBase)
 }
