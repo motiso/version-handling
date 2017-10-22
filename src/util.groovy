@@ -24,9 +24,9 @@ def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 		    .withNodeMatcher(new DefaultNodeMatcher(new ByNameAndTextRecSelector(),ElementSelectors.byName))
 		    .build()
 
-	println "checking pom differences"
-	//println myDiff.toString()
-	//return myDiff.hasDifferences()
+	
+	println myDiff.toString()
+	return myDiff.hasDifferences()
 
 }  
 
