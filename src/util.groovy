@@ -11,7 +11,7 @@ import org.xmlunit.*
 import org.xmlunit.builder.DiffBuilder
 import org.xmlunit.builder.Input
 
-
+@NonCPS
 def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 {
     	pomPrevBranch = getNewPomForRelease(pomPrevBranchDir,1)
