@@ -69,7 +69,7 @@ def getNewPomForRelease(pomDir,versionNumer)
     // output the pom
     println "creating new pom.xml "
     def outputBuilder = new StreamingMarkupBuilder()
-    String result = outputBuilder.bind{ 
+    def result = outputBuilder.bind{ 
         mkp.yield pom 
         //mkp.declareNamespace("":  "http://maven.apache.org/POM/4.0.0")
     }
