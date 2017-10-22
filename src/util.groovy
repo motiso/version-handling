@@ -5,10 +5,7 @@
 
 import groovy.xml.StreamingMarkupBuilder
 import groovy.util.XmlNodePrinter
-import org.codehaus.groovy.tools.xml.DomToGroovy
 import groovy.xml.XmlUtil
-import groovy.util.AntBuilder
-import org.custommonkey.xmlunit.*
 import org.xmlunit.diff.*
 import org.xmlunit.*
 import org.xmlunit.builder.DiffBuilder
@@ -41,8 +38,6 @@ def writeNewPom(result,pomDir)
 
 def getNewPomForRelease(pomDir,versionNumer)
 {
-    AntBuilder ant = new AntBuilder();
-    
     println "Release Script Start -----"
     
     def dir = new File(pomDir, 'pom.xml')
