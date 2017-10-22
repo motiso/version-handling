@@ -74,13 +74,13 @@ def getNewPomForRelease(pomDir,versionNumer)
         //mkp.declareNamespace("":  "http://maven.apache.org/POM/4.0.0")
     }
      
-    def writer = new StringWriter()
-	writer << XmlUtil.serialize(result)
+    //def writer = new StringWriter()
+	//writer << XmlUtil.serialize(result)
 	
-    retVal = writer.toString()
-  	println retVal
-  	writer.close()
-    return retVal
+    //retVal = writer.toString()
+  //	println retVal
+  //	writer.close()
+    return result
     
 }
 
