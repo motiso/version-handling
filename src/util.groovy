@@ -27,8 +27,9 @@ def comparePomFiles(pomPrevBranch,pomCurrentBranch)
 
 }  
 
-def writeNewPom(result,pomDir)
+def writeNewPom(pomDir,versionNumer)
 { 
+    def result = getNewPomForRelease(pomDir,versionNumer)
     def dir = new File(pomDir, 'pom.xml')
 	def writer = dir.newWriter()
 	writer << XmlUtil.serialize(result)
