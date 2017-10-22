@@ -16,16 +16,17 @@ def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 {
     	pomPrevBranch = getNewPomForRelease(pomPrevBranchDir,1)
 	pomCurrentBranch = getNewPomForRelease(pomCurrentBranchDir,1)
+	println "checking pom differences"
 	
-	def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch))
-		    .withTest(Input.fromString(pomCurrentBranch))
+	def myDiff = DiffBuilder.compare(Input.fromFile(pomPrevBranchDir))
+		    .withTest(Input.fromFile(pomCurrentBranchDir))
 		    .checkForSimilar()
 		    .withNodeMatcher(new DefaultNodeMatcher(new ByNameAndTextRecSelector(),ElementSelectors.byName))
 		    .build()
 
 	println "checking pom differences"
-	println myDiff.toString()
-	return myDiff.hasDifferences()
+	//println myDiff.toString()
+	//return myDiff.hasDifferences()
 
 }  
 
