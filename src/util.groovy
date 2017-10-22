@@ -18,13 +18,15 @@ import org.xmlunit.builder.Input
 def comparePomFiles(pomPrevBranch,pomCurrentBranch)
 {
     
-def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch))
-            .withTest(Input.fromString(pomCurrentBranch))
-            .checkForSimilar()
-            .withNodeMatcher(new DefaultNodeMatcher(new ByNameAndTextRecSelector(),ElementSelectors.byName))
-            .build()
-println myDiff.toString()
-println myDiff.hasDifferences()
+	def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch))
+		    .withTest(Input.fromString(pomCurrentBranch))
+		    .checkForSimilar()
+		    .withNodeMatcher(new DefaultNodeMatcher(new ByNameAndTextRecSelector(),ElementSelectors.byName))
+		    .build()
+
+	println "checking pom differences"
+	println myDiff.toString()
+	return myDiff.hasDifferences()
 
 }  
 
@@ -37,24 +39,21 @@ def writeNewPom(result,pomDir)
   return writer
 }
 
-def removePomDependencies(pomDir)
+def createNewPomForRelease(pomDir,versionNumer)
 {
     AntBuilder ant = new AntBuilder();
     
     println "Release Script Start -----"
     
     def dir = new File(pomDir, 'pom.xml')
-    // copy a backup of the pom
-    println "A copy of the old pom is saved in pom.backup.xml"
-    ant.copy(file: dir, tofile: "pom.backup.xml")
     
     def pom = new XmlSlurper( false, false ).parse(dir)
     
-  	// increase version number
+    // increase version number
     def version = pom.version.toString().replace("-SNAPSHOT", "").split("\\.")
-    version[-1] = version[-1].toInteger()+1
+    //version[-1] = version[-1].toInteger()+1
     println "Previoues version of pom: ${pom.version}"
-    pom.version = version.join('.') 
+    pom.version = versionNumer 
     println "New Version of pom: ${pom.version}"
   
     // remove snapshots in properties
@@ -72,7 +71,7 @@ def removePomDependencies(pomDir)
     println "OK"
     
     // output the pom
-    print "Writing new pom.xml "
+    println "creating new pom.xml "
     def outputBuilder = new StreamingMarkupBuilder()
     String result = outputBuilder.bind{ 
         mkp.yield pom 
@@ -82,10 +81,10 @@ def removePomDependencies(pomDir)
     def writer = new StringWriter()
 	writer << XmlUtil.serialize(result)
 	
-    def retVal = writer.toString()
-  	println retVal
-  	writer.close()
-    return retVal
+    return writer.toString()
+  //	println retVal
+  //	writer.close()
+   // return retVal
     
 }
 
