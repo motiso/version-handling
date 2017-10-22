@@ -14,8 +14,8 @@ import org.xmlunit.builder.Input
 @NonCPS
 def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 {
-    	pomPrevBranch = getNewPomForRelease(pomPrevBranchDir,1)
-	pomCurrentBranch = getNewPomForRelease(pomCurrentBranchDir,1)
+    	def pomPrevBranch = getNewPomForRelease(pomPrevBranchDir,1)
+	def pomCurrentBranch = getNewPomForRelease(pomCurrentBranchDir,1)
 	println "checking pom differences"
 	
 	def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch))
