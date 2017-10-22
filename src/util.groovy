@@ -39,7 +39,7 @@ def writeNewPom(result,pomDir)
   return writer
 }
 
-def createNewPomForRelease(pomDir,versionNumer)
+def getNewPomForRelease(pomDir,versionNumer)
 {
     AntBuilder ant = new AntBuilder();
     
@@ -81,10 +81,10 @@ def createNewPomForRelease(pomDir,versionNumer)
     def writer = new StringWriter()
 	writer << XmlUtil.serialize(result)
 	
-    return writer.toString()
-  //	println retVal
-  //	writer.close()
-   // return retVal
+    retVal = writer.toString()
+  	println retVal
+  	writer.close()
+    return retVal
     
 }
 
