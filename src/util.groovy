@@ -18,8 +18,8 @@ def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 	def pomCurrentBranch = getNewPomForRelease(pomCurrentBranchDir,1)
 	println "checking pom differences"
 	
-	def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch))
-		    .withTest(Input.fromString(pomCurrentBranch))
+	def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch.toString()))
+		    .withTest(Input.fromString(pomCurrentBranch.toString()))
 		    .checkForSimilar()
 		    .withNodeMatcher(new DefaultNodeMatcher(new ByNameAndTextRecSelector(),ElementSelectors.byName))
 		    .build()
