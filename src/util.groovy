@@ -12,9 +12,11 @@ import org.xmlunit.builder.DiffBuilder
 import org.xmlunit.builder.Input
 
 
-def comparePomFiles(pomPrevBranch,pomCurrentBranch)
+def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 {
-    
+    	pomPrevBranch = getNewPomForRelease(pomPrevBranchDir,1)
+	pomCurrentBranch = getNewPomForRelease(pomCurrentBranchDir,1)
+	
 	def myDiff = DiffBuilder.compare(Input.fromString(pomPrevBranch))
 		    .withTest(Input.fromString(pomCurrentBranch))
 		    .checkForSimilar()
@@ -36,6 +38,7 @@ def writeNewPom(pomDir,versionNumer)
 	writer.close()
   return writer
 }
+
 
 @NonCPS
 def getNewPomForRelease(pomDir,versionNumer)
