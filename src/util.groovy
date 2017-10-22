@@ -37,6 +37,7 @@ def writeNewPom(pomDir,versionNumer)
   return writer
 }
 
+@NonCPS
 def getNewPomForRelease(pomDir,versionNumer)
 {
     println "Release Script Start -----"
