@@ -25,9 +25,9 @@ def pomFilesAreIdentical(pomPrevBranchDir,pomCurrentBranchDir)
 		    .build()
 
 	
-	println myDiff.identical()
+	println myDiff.isIdentical()
 	println myDiff.hasDifferences()
-	return myDiff.identical()
+	return myDiff.isIdentical()
 	
 
 }  
