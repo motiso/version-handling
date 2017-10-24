@@ -12,7 +12,7 @@ import org.xmlunit.builder.DiffBuilder
 import org.xmlunit.builder.Input
 
 @NonCPS
-def pomFilesHaveDifferences(pomPrevBranchDir,pomCurrentBranchDir)
+def pomFilesAreIdentical(pomPrevBranchDir,pomCurrentBranchDir)
 {
     	def pomPrevBranch = getNewPomForRelease(pomPrevBranchDir,1)
 	def pomCurrentBranch = getNewPomForRelease(pomCurrentBranchDir,1)
@@ -25,8 +25,9 @@ def pomFilesHaveDifferences(pomPrevBranchDir,pomCurrentBranchDir)
 		    .build()
 
 	
-	println myDiff.toString()
-	return myDiff.hasDifferences()
+	println myDiff.identical()
+	println myDiff.hasDifferences()
+	return myDiff.identical()
 	
 
 }  
