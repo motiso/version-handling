@@ -27,7 +27,7 @@ def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 	
 	println myDiff.toString()
 	println myDiff.hasDifferences()
-	return diff.toString() == diff.hasDifferences()
+	return myDiff.toString() == myDiff.hasDifferences()
 	
 
 }  
