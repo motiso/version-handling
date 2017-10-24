@@ -26,8 +26,7 @@ def comparePomFilesIgnoreVersion(pomPrevBranchDir,pomCurrentBranchDir)
 
 	
 	println myDiff.toString()
-	println myDiff.hasDifferences()
-	return myDiff.hasDifferences()
+	return myDiff.hasDifferences() == false
 	
 
 }  
@@ -80,14 +79,7 @@ def getNewPomForRelease(pomDir,versionNumer)
         mkp.yield pom 
         //mkp.declareNamespace("":  "http://maven.apache.org/POM/4.0.0")
     }
-     println "showing results"
-     println result
-    //def writer = new StringWriter()
-	//writer << XmlUtil.serialize(result)
-	
-    //retVal = writer.toString()
-  //	println retVal
-  //	writer.close()
+     
     return result
     
 }
